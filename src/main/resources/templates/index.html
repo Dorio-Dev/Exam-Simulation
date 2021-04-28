@@ -19,14 +19,20 @@
             /*position: fixed;*/
             /*top: 3.75em;*/
             height: 180px;
-            background: #312450;
+            background: #7fbbff;
             text-align: left;
             color: aliceblue;
-            font-size: 1.3em;
+            font-size: 1.1em;
             padding: 30px 50px;
+            margin: 0px 0px;
+            border: 12px red;
         }
-        section {
-            font-size: 1.2em;
+        section{
+            margin-top: 1em;
+        }
+        section div{
+            font-size: 0.9em;
+            border: thin solid #3f3f79;
             color: midnightblue;
         }
     </style>
@@ -39,10 +45,10 @@
         To run an application, a DevOps Engineer launches an Amazon EC2 instances with public IP addresses ina public subnet. A user data script obtains the application artifacts and installs them on the instances uponlaunch. A change to the security classification of the application now requires the instances to run with noaccess to the Internet. While the instances launch successfully and show as healthy, the application doesnot seem to be installed.Which of the following should successfully install the application while complying with the new rule?
     </nav>
     <main>
-        <section>A. Launch the instances in a public subnet with Elastic IP addresses attached. Once the application isinstalled and running, run a script to disassociate the Elastic IP addresses afterwards.</section>
-        <section>B. Set up a NAT gateway. Deploy the EC2 instances to a private subnet. Update the private subnet's routetable to use the NAT gateway as the default route.</section>
-        <section>C. Publish the application artifacts to an Amazon S3 bucket and create a VPC endpoint for S3. Assign anIAM instance profile to the EC2 instances so they can read the application artifacts from the S3 bucket.</section>
-        <section>D. Create a security group for the application instances and whitelist only outbound traffic to the artifactrepository. Remove the security group rule once the install is complete.</section>
+        <section><div>A. Launch the instances in a public subnet with Elastic IP addresses attached. Once the application isinstalled and running, run a script to disassociate the Elastic IP addresses afterwards.</div></section>
+        <section><div>B. Set up a NAT gateway. Deploy the EC2 instances to a private subnet. Update the private subnet's routetable to use the NAT gateway as the default route.</div></section>
+        <section><div>C. Publish the application artifacts to an Amazon S3 bucket and create a VPC endpoint for S3. Assign anIAM instance profile to the EC2 instances so they can read the application artifacts from the S3 bucket.</div></section>
+        <section><div>D. Create a security group for the application instances and whitelist only outbound traffic to the artifactrepository. Remove the security group rule once the install is complete.</div></section>
     </main>
     <footer>
         &lt;Prev
