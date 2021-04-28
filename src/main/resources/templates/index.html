@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
     <style type="text/css">
         header {
             /*position: fixed;*/
@@ -13,19 +15,20 @@
             background: #FFFFFF;
             text-align: left;
             width: 100%;
-            font-size: 0.8em;
+            font-size: 1.3em;
         }
         nav {
             /*position: fixed;*/
             /*top: 3.75em;*/
             height: 180px;
-            background: #7fbbff;
+            background: #173a7e;
             text-align: left;
             color: aliceblue;
-            font-size: 1.1em;
-            padding: 30px 50px;
+            font-size: 1.2em;
+            padding: 30px 20px;
             margin: 0px 0px;
             border: 12px red;
+            font-family: 'Lora', serif;
         }
         section{
             margin-top: 1em;
@@ -34,6 +37,17 @@
             font-size: 0.9em;
             border: thin solid #3f3f79;
             color: midnightblue;
+        }
+        ul{
+            list-style: none;
+            padding: 0px;
+        }
+        ul li{
+            border: 0.1px solid #3f3f79;
+            font-size: 1.1em;
+            margin: 8px;
+            padding: 3px;
+            font-family: 'Lora', serif;
         }
     </style>
 </head>
@@ -45,14 +59,16 @@
         To run an application, a DevOps Engineer launches an Amazon EC2 instances with public IP addresses ina public subnet. A user data script obtains the application artifacts and installs them on the instances uponlaunch. A change to the security classification of the application now requires the instances to run with noaccess to the Internet. While the instances launch successfully and show as healthy, the application doesnot seem to be installed.Which of the following should successfully install the application while complying with the new rule?
     </nav>
     <main>
-        <section><div>A. Launch the instances in a public subnet with Elastic IP addresses attached. Once the application isinstalled and running, run a script to disassociate the Elastic IP addresses afterwards.</div></section>
-        <section><div>B. Set up a NAT gateway. Deploy the EC2 instances to a private subnet. Update the private subnet's routetable to use the NAT gateway as the default route.</div></section>
-        <section><div>C. Publish the application artifacts to an Amazon S3 bucket and create a VPC endpoint for S3. Assign anIAM instance profile to the EC2 instances so they can read the application artifacts from the S3 bucket.</div></section>
-        <section><div>D. Create a security group for the application instances and whitelist only outbound traffic to the artifactrepository. Remove the security group rule once the install is complete.</div></section>
+        <ul>
+            <li><input type="checkbox" name="color" value="blue"/>A. Launch the instances in a public subnet with Elastic IP addresses attached. Once the application isinstalled and running, run a script to disassociate the Elastic IP addresses afterwards.</li>
+            <li><input type="checkbox" name="color" value="blue"/>B. Set up a NAT gateway. Deploy the EC2 instances to a private subnet. Update the private subnet's routetable to use the NAT gateway as the default route.</li>
+            <li><input type="checkbox" name="color" value="blue"/>C. Publish the application artifacts to an Amazon S3 bucket and create a VPC endpoint for S3. Assign anIAM instance profile to the EC2 instances so they can read the application artifacts from the S3 bucket.</li>
+            <li><input type="checkbox" name="color" value="blue"/>D. Create a security group for the application instances and whitelist only outbound traffic to the artifactrepository. Remove the security group rule once the install is complete.</li>
+        </ul>
+
     </main>
     <footer>
-        &lt;Prev
-        Right &gt;
+        &lt;Prev   Right &gt;
     </footer>
 </body>
 </html>
