@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        header {
+            height: 40px;
+            overflow: hidden; /* Disables scrollbars on the navigation frame. To enable scrollbars, change "hidden" to "scroll" */
+            background: #BCCE98;
+            text-align: left;
+        }
+        nav {
+            height: 300px;
+            overflow: hidden; /* Disables scrollbars on the navigation frame. To enable scrollbars, change "hidden" to "scroll" */
+            background: #b5b5b5;
+            text-align: left;
+            padding: 50px 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Question 1.
+    </header>
+    <nav>
+        To run an application, a DevOps Engineer launches an Amazon EC2 instances with public IP addresses ina public subnet. A user data script obtains the application artifacts and installs them on the instances uponlaunch. A change to the security classification of the application now requires the instances to run with noaccess to the Internet. While the instances launch successfully and show as healthy, the application doesnot seem to be installed.Which of the following should successfully install the application while complying with the new rule?
+    </nav>
+    <main>
+        <section>A. Launch the instances in a public subnet with Elastic IP addresses attached. Once the application isinstalled and running, run a script to disassociate the Elastic IP addresses afterwards.</section>
+        <section>B. Set up a NAT gateway. Deploy the EC2 instances to a private subnet. Update the private subnet's routetable to use the NAT gateway as the default route.</section>
+        <section>C. Publish the application artifacts to an Amazon S3 bucket and create a VPC endpoint for S3. Assign anIAM instance profile to the EC2 instances so they can read the application artifacts from the S3 bucket.</section>
+        <section>D. Create a security group for the application instances and whitelist only outbound traffic to the artifactrepository. Remove the security group rule once the install is complete.</section>
+    </main>
+    <footer>
+        &lt;Prev
+        Right &gt;
+    </footer>
+</body>
+</html>
