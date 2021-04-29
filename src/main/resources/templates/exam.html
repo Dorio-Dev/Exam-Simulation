@@ -26,7 +26,7 @@
             color: aliceblue;
             font-size: 1.2em;
             padding: 30px 20px;
-            margin: 0px 0px;
+            margin: 0 0;
             border: 12px red;
             font-family: 'Lora', serif;
         }
@@ -40,7 +40,7 @@
         }
         ul{
             list-style: none;
-            padding: 0px;
+            padding: 0;
         }
         ul li{
             border: 0.1px solid #3f3f79;
@@ -49,7 +49,34 @@
             padding: 3px;
             font-family: 'Lora', serif;
         }
+        button{
+            padding: 7px;
+            font-size: 0.9em;
+        }
+        .button-box{
+            width:200px;
+            float:right;
+        }
+        #btn-result{
+            float: left;
+        }
+        #btn-next{
+            float: left;
+            margin-left: 5%;
+        }
+        #btn-prev{
+            float: left;
+            margin-left: 5%;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"   integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="   crossorigin="anonymous"></script>
+    <script th:inline="Javascript">
+        $(function (){
+            $("#btn-result").click(function (){
+            alert("result");
+            });
+        })
+    </script>
 </head>
 <body>
     <header>
@@ -59,15 +86,21 @@
         <p th:text="${exam.question}">question</p>
     </nav>
     <main>
+        <form>
         <ul>
             <li th:each="choice,i : ${exam.choices} ">
                 <input type="checkbox" th:id="'choice'+${i.count}"/>
                 <span th:text="${choice}">choice</span>
             </li>
         </ul>
+        </form>
     </main>
     <footer>
-        &lt;Prev   Right &gt;
+        <div class="button-box">
+            <div><button id="btn-result">result</button></div>
+            <div><button id="btn-prev">&lt;prev</button></div>
+            <div><button id="btn-next">next&gt;</button></div>
+        </div>
     </footer>
 </body>
 </html>
