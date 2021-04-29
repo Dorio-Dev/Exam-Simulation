@@ -30,7 +30,9 @@ public class Exam {
     private int[] correct;
     private int[] inCorrect;
 
-    public Exam() {
+    private void MakeExam(){
+        originList = null;
+        examList = null;
         ClassPathResource examResource = new ClassPathResource("exam.xml");
         try {
             File examFile = examResource.getFile();
@@ -76,6 +78,9 @@ public class Exam {
         } catch (SAXException e) {
             e.printStackTrace();
         }
+    }
+    public Exam() {
+        this.MakeExam();
     }
 
     public void shuffle(){
