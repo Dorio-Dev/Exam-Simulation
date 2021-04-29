@@ -27,6 +27,14 @@ public class MainController {
 
         return mv;
     }
+
+    @RequestMapping("exam")
+    public ModelAndView examView(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("exam", exam.getExamList().get(0));
+        mv.setViewName("index");
+        return mv;
+    }
 //
 //    @GetMapping("detail/{boardId}")
 //    public ModelAndView detail(@PathVariable int boardId){
