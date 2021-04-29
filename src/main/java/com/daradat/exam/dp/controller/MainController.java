@@ -1,39 +1,55 @@
 package com.daradat.exam.dp.controller;
 
 import com.daradat.exam.cm.dto.Exam;
+import com.daradat.exam.cm.dto.ExamObject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
 public class MainController {
 
-    @Resource(name="exam")
-    private Exam exam;
+//    @Resource(name="exam")
+//    private Exam exam;
 
     @RequestMapping("index")
     public ModelAndView indexView(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
 
         mv.setViewName("index");
-        mv.addObject("a", exam);
+        //mv.addObject("a", exam);
 
         return mv;
     }
 
-    @RequestMapping("exam")
+    @GetMapping("/exam")
     public ModelAndView examView(HttpServletRequest request){
         ModelAndView mv = new ModelAndView();
+        //mv.addObject("exam", exam.getExamList().get(0));
+        Exam exam = (Exam) request.getSession().getAttribute("exam");
         mv.addObject("exam", exam.getExamList().get(0));
-        mv.setViewName("index");
+        mv.setViewName("exam");
         return mv;
+    }
+
+    @PostMapping("/exam/{examIndex}")
+    public ExamObject exam(HttpServletRequest request, @PathVariable int examIndex, @RequestParam Map param){
+        Exam exam = (Exam) request.getSession().getAttribute("exam");
+        //정답 체크
+        ExamObject currentExam = exam.getExamList().get(examIndex);
+
+
+
+
+
+        //다음문제 리턴
+        return exam.getExamList().get(examIndex+1);
     }
 //
 //    @GetMapping("detail/{boardId}")

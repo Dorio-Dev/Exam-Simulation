@@ -12,10 +12,10 @@ public class ExamApplication {
         SpringApplication.run(ExamApplication.class, args);
     }
 
-    @Bean(name = "exam")
+    /*@Bean(name = "exam")
     public Exam exam(){
         Exam exam = new Exam();
         return exam;
-    }
+    }*/
 
 }
