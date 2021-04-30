@@ -73,7 +73,13 @@
     <script th:inline="Javascript">
         $(function (){
             $("#btn-result").click(function (){
-            alert("result");
+                alert("result");
+            });
+            $("#btn-prev").click(function (){
+                alert("prev");
+            });
+            $("#btn-next").click(function (){
+                alert("next");
             });
         })
     </script>
@@ -87,12 +93,14 @@
     </nav>
     <main>
         <form>
-        <ul>
-            <li th:each="choice,i : ${exam.choices} ">
-                <input type="checkbox" th:id="'choice'+${i.count}"/>
-                <span th:text="${choice}">choice</span>
-            </li>
-        </ul>
+            <ul>
+                <li th:each="choice,i : ${exam.choices} ">
+                    <input type="checkbox" th:id="'choice'+${i.count}"/>
+                    <span th:text="${choice}">choice</span>
+                </li>
+            </ul>
+            <input type="hidden" id="correctAnswers" th:value="${exam.answer}"/>
+            <input type="hidden" id="examIndex" th:value="${examIndex}"/>
         </form>
     </main>
     <footer>

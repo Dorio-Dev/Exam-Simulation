@@ -34,6 +34,7 @@ public class MainController {
         //mv.addObject("exam", exam.getExamList().get(0));
         Exam exam = (Exam) request.getSession().getAttribute("exam");
         mv.addObject("exam", exam.getExamList().get(0));
+        mv.addObject("examIndex", 1);
         mv.setViewName("exam");
         return mv;
     }
