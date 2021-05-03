@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -34,24 +35,12 @@ public class MainController {
         //mv.addObject("exam", exam.getExamList().get(0));
         Exam exam = (Exam) request.getSession().getAttribute("exam");
         mv.addObject("exam", exam.getExamList().get(0));
-        mv.addObject("examIndex", 1);
+        mv.addObject("examIndex", 0);
         mv.setViewName("exam");
         return mv;
     }
 
-    @PostMapping("/exam/{examIndex}")
-    public ExamObject exam(HttpServletRequest request, @PathVariable int examIndex, @RequestParam Map param){
-        Exam exam = (Exam) request.getSession().getAttribute("exam");
-        //정답 체크
-        ExamObject currentExam = exam.getExamList().get(examIndex);
 
-
-
-
-
-        //다음문제 리턴
-        return exam.getExamList().get(examIndex+1);
-    }
 //
 //    @GetMapping("detail/{boardId}")
 //    public ModelAndView detail(@PathVariable int boardId){

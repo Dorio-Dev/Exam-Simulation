@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -55,8 +57,12 @@ public class Exam {
                     Element element = (Element) node;
 
                     examObject.setQuestion(element.getElementsByTagName("question").item(0).getTextContent());
-                    examObject.setAnswer(Arrays.asList(element.getElementsByTagName("correctAnswers").item(0).getTextContent().split(",")));
+                    String s2 = element.getElementsByTagName("correctAnswers").item(0).getTextContent().split(",")[0];
+                    Byte b = element.getElementsByTagName("correctAnswers").item(0).getTextContent().split(",")[0].getBytes()[0];
 
+                    examObject.setAnswer(Arrays.asList(element.getElementsByTagName("correctAnswers").item(0).getTextContent().split(","))
+                            .stream().map(s -> ((int)s.trim().getBytes()[0]) - 64).collect(Collectors.toList()));
+                    //Arrays.asList(string.split(",")).stream().map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
 
                     NodeList choiceNodeList = ((Element)element.getElementsByTagName("choices").item(0)).getElementsByTagName("choice");
                     examObject.setCntOfChoices(choiceNodeList.getLength());

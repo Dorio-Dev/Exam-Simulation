@@ -14,6 +14,6 @@ public class ExamObject {
 
     private List<String> choices;
 
-    private List<String> answer;
+    private List<Integer> answer;
 
 }
