@@ -7,7 +7,7 @@
             <choice>C. Publish the application artifacts to an Amazon S3 bucket and create a VPC endpoint for S3. Assign anIAM instance profile to the EC2 instances so they can read the application artifacts from the S3 bucket.</choice>
             <choice>D. Create a security group for the application instances and whitelist only outbound traffic to the artifactrepository. Remove the security group rule once the install is complete.</choice>
         </choices>
-        <correctAnswers>B</correctAnswers>
+        <correctAnswers>C</correctAnswers>
     </exam>
     <exam>
         <question>An IT department manages a portfolio with Windows and Linux (Amazon and Red Hat Enterprise Linux)servers both on-premises and on AWS. An audit reveals that there is no process for updating OS and coreapplication patches, and that the servers have inconsistent patch levels.Which of the following provides the MOST reliable and consistent mechanism for updating and maintainingall servers at the recent OS and core application patch levels?</question>

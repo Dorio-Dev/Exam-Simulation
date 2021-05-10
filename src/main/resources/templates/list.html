@@ -20,12 +20,11 @@
         nav {
             /*position: fixed;*/
             /*top: 3.75em;*/
-            height: 180px;
-            background: #173a7e;
+            height: 20px;
             text-align: left;
-            color: aliceblue;
+            color: white;
             font-size: 1.2em;
-            padding: 30px 20px;
+            padding-bottom: 10px;
             margin: 0 0;
             border: 12px red;
             font-family: 'Lora', serif;
@@ -55,7 +54,7 @@
         }
         .button-box{
             width:200px;
-            float:right;
+            float:left;
         }
         #btn-result{
             float: left;
@@ -106,13 +105,10 @@
 
             });
 
-            $("#btn-prev").click(function (){
-                location.href = "/exam/" + (parseInt($("#examIndex").val(), 10)  - 1);
+            $("#btn-shuffle").click(function (){
+                location.href = "/explore/shuffle";
             });
 
-            $("#btn-next").click(function (){
-                location.href = "/exam/" + (parseInt($("#examIndex").val(), 10) + 1);
-            });
 
             var idx = parseInt($("#examIndex").val(), 10);
 
@@ -131,11 +127,16 @@
     <header>
         List.
     </header>
+    <nav>
+        <div class="button-box">
+            <div><button id="btn-shuffle">Shuffle</button></div>
+        </div>
+    </nav>
     <main>
         <form>
             <ul>
                 <li th:each="exam,i : ${examList} ">
-                    <a th:href="'/exam/' + ${i.index+1}" th:text="'Q' + ${i.index+1} + '.' + ${#strings.abbreviate(exam.question, 150)}">q1</a>
+                    <a th:href="'/exam/' + ${i.index}" th:text="'Q' + ${i.index+1} + '.' + ${#strings.abbreviate(exam.question, 150)}">q1</a>
                 </li>
             </ul>
         </form>

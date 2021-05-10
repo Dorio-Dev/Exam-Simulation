@@ -62,6 +62,18 @@ public class MainController {
         return mv;
     }
 
+    @GetMapping("/explore/shuffle")
+    public ModelAndView examListShuffle(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+
+        Exam exam = (Exam) request.getSession().getAttribute("exam");
+        exam.shuffle();
+        mv.addObject("examList", exam.getExamList());
+        //mv.addObject("examIndex", 0);
+        mv.setViewName("list");
+        return mv;
+    }
+
 //
 //    @GetMapping("detail/{boardId}")
 //    public ModelAndView detail(@PathVariable int boardId){
