@@ -114,11 +114,6 @@
                 location.href = "/exam/" + (parseInt($("#examIndex").val(), 10) + 1);
             });
 
-            $("#btn-Explore").click(function (){
-                location.href = "/explore";
-            });
-
-
             var idx = parseInt($("#examIndex").val(), 10);
 
             if(idx == 0){
@@ -133,30 +128,20 @@
     </script>
 </head>
 <body>
-    <header th:text="'Question ' + ${examIndex+1} + '.'">
-        Question.
+    <header>
+        List.
     </header>
-    <nav>
-        <p th:text="${exam.question}">question</p>
-    </nav>
     <main>
         <form>
             <ul>
-                <li th:each="choice,i : ${exam.choices} ">
-                    <input type="checkbox" th:id="'choice'+${i.count}"/>
-                    <span th:text="${choice}" th:id="'txtChoice'+${i.count}">choice</span>
+                <li th:each="exam,i : ${examList} ">
+                    <a th:href="'/exam/' + ${i.index+1}" th:text="'Q' + ${i.index+1} + '.' + ${#strings.abbreviate(exam.question, 150)}">q1</a>
                 </li>
             </ul>
-            <input type="hidden" id="correctAnswers" th:value="${exam.answer}"/>
-            <input type="hidden" id="examIndex" th:value="${examIndex}"/>
         </form>
     </main>
     <footer>
         <div class="button-box">
-            <div><button id="btn-result">result</button></div>
-            <div><button id="btn-prev">&lt;prev</button></div>
-            <div><button id="btn-next">next&gt;</button></div>
-            <div><button id="btn-Explore">Explore (List)</button></div>
         </div>
     </footer>
 </body>

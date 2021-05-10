@@ -40,6 +40,27 @@ public class MainController {
         return mv;
     }
 
+    @GetMapping("/exam/{examIndex}")
+    public ModelAndView exam(HttpServletRequest request, @PathVariable int examIndex){
+        ModelAndView mv = new ModelAndView();
+        //mv.addObject("exam", exam.getExamList().get(0));
+        Exam exam = (Exam) request.getSession().getAttribute("exam");
+        mv.addObject("exam", exam.getExamList().get(examIndex));
+        mv.addObject("examIndex", examIndex);
+        mv.setViewName("exam");
+        return mv;
+    }
+
+    @GetMapping("/explore")
+    public ModelAndView examList(HttpServletRequest request){
+        ModelAndView mv = new ModelAndView();
+        //mv.addObject("exam", exam.getExamList().get(0));
+        Exam exam = (Exam) request.getSession().getAttribute("exam");
+        mv.addObject("examList", exam.getExamList());
+        //mv.addObject("examIndex", 0);
+        mv.setViewName("list");
+        return mv;
+    }
 
 //
 //    @GetMapping("detail/{boardId}")

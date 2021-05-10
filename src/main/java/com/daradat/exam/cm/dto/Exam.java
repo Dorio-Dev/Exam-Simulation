@@ -15,6 +15,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,13 +36,15 @@ public class Exam {
     private void MakeExam(){
         originList = null;
         examList = null;
-        ClassPathResource examResource = new ClassPathResource("exam.xml");
+        ClassPathResource examResource = new ClassPathResource("exam/exam.xml");
         try {
-            File examFile = examResource.getFile();
+            //File examFile = examResource.getFile();
+
 
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document document = documentBuilder.parse(examFile);
+            //Document document = documentBuilder.parse(examFile);
+            Document document = documentBuilder.parse(examResource.getInputStream());
 
             document.getDocumentElement().normalize();
 
