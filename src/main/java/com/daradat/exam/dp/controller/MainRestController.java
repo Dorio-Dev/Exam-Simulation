@@ -25,7 +25,7 @@ public class MainRestController {
     public Map<String, Object> checkAnswer(HttpServletRequest request, @RequestParam Map<String, String> param){
         Map<String, Object> result = new HashMap();
         Exam exam = (Exam) request.getSession().getAttribute("exam");
-
+        String answer = param.get("answer");
         result.put("answer", exam.getExamList().get(Integer.parseInt(param.get("examIndex"))).getAnswer());
 
         return result;
