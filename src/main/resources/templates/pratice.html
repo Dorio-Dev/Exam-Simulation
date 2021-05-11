@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <style type="text/css">
+        header {
+            /*position: fixed;*/
+            /*left: 0;*/
+            /*top: 0;*/
+            height: 2em;
+            overflow: hidden; /* Disables scrollbars on the navigation frame. To enable scrollbars, change "hidden" to "scroll" */
+            background: #FFFFFF;
+            text-align: left;
+            width: 100%;
+            font-size: 1.3em;
+        }
+        nav {
+            /*position: fixed;*/
+            /*top: 3.75em;*/
+            height: 180px;
+            background: #173a7e;
+            text-align: left;
+            color: aliceblue;
+            font-size: 1.2em;
+            padding: 30px 20px;
+            margin: 0 0;
+            border: 12px red;
+            font-family: 'Lora', serif;
+        }
+        section{
+            margin-top: 1em;
+        }
+        section div{
+            font-size: 0.9em;
+            border: thin solid #3f3f79;
+            color: midnightblue;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        ul li{
+            border: 0.1px solid #3f3f79;
+            font-size: 1.1em;
+            margin: 8px;
+            padding: 3px;
+            font-family: 'Lora', serif;
+        }
+        button{
+            padding: 7px;
+            font-size: 0.9em;
+        }
+        .button-box{
+            width:200px;
+            float:right;
+        }
+        #btn-result{
+            float: left;
+        }
+        #btn-next{
+            float: left;
+            margin-left: 5%;
+        }
+        #btn-prev{
+            float: left;
+            margin-left: 5%;
+        }
+    </style>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+
+    <script th:inline="Javascript">
+        var resYn=0;
+        $(function (){
+            var checkAnswer = function(index){
+              $.ajax({
+                  type:'GET'
+                  ,url: '/exam/answer'
+                  ,contentType: 'application/json; charset=utf-8'
+                  ,data : {
+                      examIndex : $("#examIndex").val()
+                  }
+              }).done(function (result){
+                  let answerList = result.answer;
+
+                  for(let answer of answerList){
+                    $("#txtChoice"+answer).css("color", "red");
+                  }
+              })
+            };
+
+            $("#btn-result").click(function (){
+                //alert($("#correctAnswers").val()[0]);
+                if(resYn>0){
+                    $("#txtChoice"+answer).css("color", "black");
+                    resYn=0;
+                }else{
+                    checkAnswer($("#examIndex").val());
+                    resYn = 1;
+                }
+
+            });
+
+            $("#btn-prev").click(function (){
+                location.href = "/exam/" + (parseInt($("#examIndex").val(), 10)  - 1);
+            });
+
+            $("#btn-next").click(function (){
+                location.href = "/exam/" + (parseInt($("#examIndex").val(), 10) + 1);
+            });
+
+            $("#btn-Explore").click(function (){
+                location.href = "/explore";
+            });
+
+
+            var idx = parseInt($("#examIndex").val(), 10);
+
+            if(idx == 0){
+                $("#btn-prev").attr('disabled', true);
+            }else if(idx == 173){
+                $("#btn-next").attr('disabled', true);
+            }
+
+        });
+
+
+    </script>
+</head>
+<body>
+    <header th:text="'Question ' + ${examIndex+1} + '.'">
+        Question.
+    </header>
+    <nav>
+        <p th:text="${exam.question}">question</p>
+    </nav>
+    <main>
+        <form>
+            <ul>
+                <li th:each="choice,i : ${exam.choices} ">
+                    <input type="checkbox" th:id="'choice'+${i.count}"/>
+                    <span th:text="${choice}" th:id="'txtChoice'+${i.count}">choice</span>
+                </li>
+            </ul>
+            <input type="hidden" id="correctAnswers" th:value="${exam.answer}"/>
+            <input type="hidden" id="examIndex" th:value="${examIndex}"/>
+        </form>
+    </main>
+    <footer>
+        <div class="button-box">
+            <div><button id="btn-result">result</button></div>
+            <div><button id="btn-prev">&lt;prev</button></div>
+            <div><button id="btn-next">next&gt;</button></div>
+            <div><button id="btn-Explore">Explore (List)</button></div>
+        </div>
+    </footer>
+</body>
+</html>

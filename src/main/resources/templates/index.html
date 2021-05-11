@@ -21,11 +21,11 @@
             /*position: fixed;*/
             /*top: 3.75em;*/
             height: 180px;
-            background: #173a7e;
+            background: #ff8d00;
             text-align: left;
             color: aliceblue;
             font-size: 1.2em;
-            padding: 30px 20px;
+            padding: 10px 10px;
             margin: 0px 0px;
             border: 12px red;
             font-family: 'Lora', serif;
@@ -38,36 +38,43 @@
             border: thin solid #3f3f79;
             color: midnightblue;
         }
-        ul{
-            list-style: none;
-            padding: 0px;
+        button{
+            padding: 7px;
+            font-size: 0.9em;
         }
-        ul li{
-            border: 0.1px solid #3f3f79;
-            font-size: 1.1em;
-            margin: 8px;
-            padding: 3px;
-            font-family: 'Lora', serif;
+        .button-box{
+            width:100%;
+        }
+        #btn-exam{
+            float: right;
+            margin-right: 35%;
+            margin-top: 2%;
+            height: 10em;
+            width: 15em;
+        }
+        #btn-pratice{
+            float: left;
+            margin-left: 35%;
+            margin-top: 2%;
+            height: 10em;
+            width: 15em;
         }
     </style>
 </head>
 <body>
     <header>
-        Question 1.
+        EXAM - AWS DevOps Pro
     </header>
     <nav>
-        <p th:text="${exam.question}">question</p>
+        <h3>연습 유형을 선택 하세요.</h3>
+        <p>Pratice : 모든 문제를 답을 보면서 볼 수 있음 (순서 섞을 수 있음)</p>
+        <p>Exam : 50문제만 랜덤으로 나오고 전체 풀이 후에 결과 나옴</p>
     </nav>
     <main>
-        <ul>
-            <li th:each="choice,i : ${exam.choices} ">
-                <input type="checkbox" th:id="'choice'+${i.count}"/>
-                <span th:text="${choice}">choice</span>
-            </li>
-        </ul>
+        <div class="button-box">
+            <div><button id="btn-pratice">pratice</button></div>
+            <div><button id="btn-exam">exam</button></div>
+        </div>
     </main>
-    <footer>
-        &lt;Prev   Right &gt;
-    </footer>
 </body>
 </html>
