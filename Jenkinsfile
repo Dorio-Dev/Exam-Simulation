@@ -1,5 +1,8 @@
 pipeline {
-    stages('CheckOut'){
-        checkout scm
+    agent { node { label 'fargate-mip-be' } }
+    stages{
+        stage('CheckOut'){
+            checkout scm
+        }
     }
 }
