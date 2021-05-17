@@ -25,6 +25,19 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Test
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.4.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-engine:1.5.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-commons:1.5.1'
+    testImplementation 'org.mockito:mockito-core:3.5.10'
+    testImplementation 'org.mockito:mockito-inline:3.5.10'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.5.10'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude module: 'junit'
+    }
 }
 
 test {
