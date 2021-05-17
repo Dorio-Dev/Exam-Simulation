@@ -18,7 +18,6 @@ node {
         }
         stage('stop app'){
             sshCommand remote: remote, command: '/home/ec2-user/stop.sh'
-            sshCommand
         }
         stage('start app'){
 
