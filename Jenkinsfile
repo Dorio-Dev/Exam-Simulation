@@ -2,8 +2,11 @@ node {
     stage('CheckOut'){
         checkout scm
     }
-    stage('bootJar'){
+    stage('Unit Test'){
         sh 'chmod +x ./gradlew'
+        sh './gradlew test'
+    }
+    stage('bootJar'){
         sh './gradlew bootJar'
     }
     withCredentials([sshUserPrivateKey(credentialsId: "exam", keyFileVariable: 'keyfile')]) {
