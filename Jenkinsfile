@@ -20,7 +20,7 @@ node {
             sshCommand remote: remote, command: '/home/ec2-user/stop.sh'
         }
         stage('start app'){
-            sshCommand remote: remote, command: '/home/ec2-user/start.sh'
+            sshCommand remote: remote, command: '/home/ec2-user/start.sh 2>1'
         }
     }
 }
