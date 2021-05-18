@@ -24,6 +24,6 @@ public class MainRestControllerTest {
         param.put("test", "default");
         //Map result = mainRestController.checkAnswer(request, param);
 
-        assertThat("TEST", is("TEST"));
+        assertThat("TEST", is("TEST4"));
     }
 }
